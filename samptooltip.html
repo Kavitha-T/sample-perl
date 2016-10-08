@@ -1,0 +1,94 @@
+
+<html>
+function showComment() {
+        var divtooltip = document.getElementById("divtooltip");
+        divtooltip.style.display =  "block" ;
+    }
+
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>$(document).on("click", function(e){
+    if($(e.target).is("#period_select_range_btn")){
+      $("#selectPeriodRangePanel").show();
+    }else{
+        $("#selectPeriodRangePanel").hide();
+    }
+});</script>
+</head>
+<body>
+    <div id="selectPeriodRangePanel" style="display:none">
+    <p>Test</p>
+</div>
+
+<button id="period_select_range_btn">Select Range</button>
+	</body>
+	</html>
+	
+	$(document).on("click", function(e){
+    if($(e.target).is("#comment")){
+      $("#divtooltip").show();
+    }else{
+        $("#divtooltip").hide();
+    }
+});
+	
+	
+	
+	ar t = '';
+function gText(e) {
+    t = (document.all) ? document.selection.createRange().text : document.getSelection();
+
+    document.getElementById('input').value = t;
+}
+
+document.onmouseup = gText;
+if (!document.all) document.captureEvents(Event.MOUSEUP);
+
+
+
+
+
+
+
+
+
+
+var ele = document.getElementById('divtooltip');
+var sel = window.getSelection();
+var rel1= document.createRange();
+rel1.selectNode(document.getElementById('cal1'));
+var rel2= document.createRange();
+rel2.selectNode(document.getElementById('cal2'));
+window.addEventListener('mouseup', function () {
+    if (!sel.isCollapsed) {
+        debugger;
+        var r = sel.getRangeAt(0).getBoundingClientRect();
+        var rb1 = rel1.getBoundingClientRect();
+        var rb2 = rel2.getBoundingClientRect();
+        ele.style.top = (r.bottom - rb2.top)*100/(rb1.top-rb2.top) + 'px'; //this will place ele below the selection
+        ele.style.left = (r.left - rb2.left)*100/(rb1.left-rb2.left) + 'px'; //this will align the right edges together
+
+        //code to set content
+
+        ele.style.display = 'block';
+    }
+});
+window.addEventListener('mousedown', function () {
+    ele.style.display = 'none';
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
